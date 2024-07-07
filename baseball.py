@@ -20,8 +20,13 @@ def get_pitcher_stats(first_name, last_name, start_year, end_year):
     pitching_df = pitching_stats(start_year, end_year, ind=1)
     # mod_stats for pitching 
     pitcher_info = pitching_df[pitching_df['IDfg'] == pitcher_id]
-    mod_stats = pitcher_info[['ERA', 'xERA', 'FIP', 'xFIP', 
-                            'FB%', 'GB%', 'LD%', 'K%', 'BB%', 'K/9', 'Barrel%', 'HardHit%']]
+    mod_stats = pitcher_info[['Name','Team','Season','ERA', 'xERA', 'FIP', 'xFIP', 
+                            'FB%', 'GB%', 'LD%', 'K%', 'BB%', 'K/9', 
+                            'Barrel%', 'HardHit%', 'vCH (pi)', 'vCS (pi)', 'vCU (pi)', 'vFA (pi)', 
+                            'vFC (pi)', 'vFS (pi)', 'vKN (pi)', 'vSB (pi)', 
+                            'vSI (pi)', 'vSL (pi)']]
+    mod_stats = mod_stats.dropna(axis=1, how='any')
+    
     return mod_stats
 
 '''extracting statcast hitting and pitching data from MLB players '''
