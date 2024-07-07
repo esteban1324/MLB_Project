@@ -28,6 +28,7 @@ def get_pitcher_stats(first_name, last_name, start_year, end_year):
 
 def get_statcast_pitcher_stats(first_name, last_name, start_date, end_date):
     id = playerid_lookup(last_name,first_name)['key_mlbam'].iloc[0]
+    
     statcast_df = statcast_pitcher(start_date, end_date,  id)
     statcast_df = statcast_df[['player_name','pitch_type',
                            'game_date', 'release_speed', 'release_pos_x', 'release_pos_z', 'launch_speed', 
@@ -36,6 +37,7 @@ def get_statcast_pitcher_stats(first_name, last_name, start_date, end_date):
                             'babip_value', 'launch_speed_angle', 
                            'at_bat_number', 'pitch_number', 'pitch_name', 
                            ]]
+    
     return statcast_df
     
 
