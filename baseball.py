@@ -52,17 +52,3 @@ def get_statcast_batter_stats(first_name, last_name, start_date, end_date):
                            'at_bat_number', 'pitch_number', 'pitch_name', 
                            ]]
     return statcast_df
-
-
-
-
-
-
-    
-
-
-
-
-
-
-
