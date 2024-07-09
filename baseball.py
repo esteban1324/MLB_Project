@@ -11,7 +11,7 @@ def get_hitter_stats(first_name, last_name, start_year, end_year):
     hitter_id = get_player_id(first_name, last_name)
     hitting_df = batting_stats(start_year, end_year, ind=1)
     hitter_info = hitting_df[hitting_df['IDfg'] == hitter_id]
-    mod_stats = hitter_info[['HR', 'AVG', 'OPS', 'wRC+', 'WAR', 
+    mod_stats = hitter_info[['HR', 'AVG', 'OPS','ISO', 'wOBA', 'wRC+', 'WAR','BABIP',  
                              'GB%', 'FB%', 'K%', 'BB%', 'Barrel%', 'HardHit%']]
     return mod_stats
 
