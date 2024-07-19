@@ -1,6 +1,7 @@
 import streamlit as st
 from baseball import get_hitter_stats, get_pitcher_stats, get_statcast_pitcher_stats, get_statcast_batter_stats
-#from visuals import plot_hitter_stats, plot_pitcher_stats
+from visuals import plot_pitching_stats, plot_pitching_stats2, plot_batting_stats, plot_batting_stats2
+
 
 st.title('Player Performance Dashboard')
 pitcher = st.text_input("Enter Pitcher Name", None)
@@ -43,15 +44,20 @@ if st.session_state.hitter_button_clicked and hitter:
 if st.session_state.pitcher_button_clicked and pitcher:
     first_name, last_name = pitcher.split()
     pitcher_stats = get_pitcher_stats(first_name, last_name, start_year, end_year)
+    print(pitcher_stats)
     st.write(pitcher_stats)
-    
+    st.plotly_chart(plot_pitching_stats(pitcher_stats))
+    st.plotly_chart(plot_pitching_stats2(pitcher_stats))
+
     # insert start and end date for statcast data
     if show_statcast_pitcher:
         start_date = st.text_input('Start Date')
         end_date = st.text_input('End Date')
+
         
         # if dates are entered, show statcast data
         if start_date and end_date:
             statcast_data = get_statcast_pitcher_stats(first_name, last_name, start_date, end_date)
             st.write(statcast_data)  
-    #plot_pitcher_stats(pitcher_stats)
+        
+
