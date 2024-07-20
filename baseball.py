@@ -10,8 +10,8 @@ def get_player_id(first_name, last_name):
 def get_hitter_stats(first_name, last_name, start_year, end_year):
     hitter_id = get_player_id(first_name, last_name)
     hitting_df = batting_stats(start_year, end_year, ind=1)
-    hitter_info = hitting_df[hitting_df['IDfg'] == hitter_id]
-    mod_stats = hitter_info[['HR', 'AVG', 'OPS','ISO', 'wOBA', 'wRC+', 'WAR','BABIP',  
+    hitter_info = hitting_df[hitting_df['IDfg'] == hitter_id].sort_values(by=['Season'], ascending=True)
+    mod_stats = hitter_info[['Name','Team','Season','HR', 'AVG', 'OPS', 'wOBA', 'wRC+', 'WAR',  
                              'GB%', 'FB%', 'K%', 'BB%', 'Barrel%', 'HardHit%']]
     return mod_stats
 
@@ -19,7 +19,7 @@ def get_pitcher_stats(first_name, last_name, start_year, end_year):
     pitcher_id = get_player_id(first_name, last_name)
     pitching_df = pitching_stats(start_year, end_year, ind=1)
     # mod_stats for pitching 
-    pitcher_info = pitching_df[pitching_df['IDfg'] == pitcher_id]
+    pitcher_info = pitching_df[pitching_df['IDfg'] == pitcher_id].sort_values(by=['Season'], ascending=True)
     mod_stats = pitcher_info[['Name','Team','Season','ERA', 'xERA', 'FIP', 'xFIP', 
                             'FB%', 'GB%', 'LD%', 'K%', 'BB%', 'K/9', 
                             'Barrel%', 'HardHit%', 'vCH (pi)', 'vCS (pi)', 'vCU (pi)', 'vFA (pi)', 
