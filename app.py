@@ -29,6 +29,8 @@ if st.session_state.hitter_button_clicked and hitter:
     first_name, last_name = hitter.split()
     hitter_stats = get_hitter_stats(first_name, last_name, start_year, end_year)
     st.write(hitter_stats)
+    st.plotly_chart(plot_batting_stats(hitter_stats))
+    st.plotly_chart(plot_batting_stats2(hitter_stats))
     
     # insert start and end date for statcast data
     if show_statcast_hitter:
@@ -44,7 +46,6 @@ if st.session_state.hitter_button_clicked and hitter:
 if st.session_state.pitcher_button_clicked and pitcher:
     first_name, last_name = pitcher.split()
     pitcher_stats = get_pitcher_stats(first_name, last_name, start_year, end_year)
-    print(pitcher_stats)
     st.write(pitcher_stats)
     st.plotly_chart(plot_pitching_stats(pitcher_stats))
     st.plotly_chart(plot_pitching_stats2(pitcher_stats))

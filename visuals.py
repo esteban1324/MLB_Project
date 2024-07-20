@@ -12,9 +12,11 @@ def plot_pitching_stats2(player):
 
 def plot_batting_stats(player):
     fig = px.line(player, x="Season", y=player.columns[1:7], title="Seasons vs HR, AVG, OPS, ISO, wOBA, wRC+, WAR, BABIP, GB%, FB%, K%, BB%, Barrel%, HardHit%")
-    
+    return fig
 
 def plot_batting_stats2(player):
     fig = px.bar(player, x="Season", y=player.columns[8:13])
-    
+    return fig
+
+# sabermetrics plotting functions
 
